@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Check Xloads — Xloader</title>
+		<link rel="stylesheet" href="xloads.css" />
+	</head>
+	<body>
+		<header class="topbar">
+			<div class="brand">
+				<span class="mark" aria-hidden="true">
+					<svg viewBox="0 0 32 32" width="26" height="26">
+						<path
+							d="M8 8 L24 24 M24 8 L8 24"
+							stroke="currentColor"
+							stroke-width="4.5"
+							stroke-linecap="round"
+						/>
+					</svg>
+				</span>
+				<div class="brand-text">
+					<h1>Check Xloads</h1>
+					<p>Every download Xloader caught — when it started, the link, and the site it came from.</p>
+				</div>
+			</div>
+			<div class="counter"><span id="count">0</span><span class="counter-label">recorded</span></div>
+		</header>
+
+		<section class="toolbar">
+			<label class="search" for="search">
+				<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
+					<circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2" />
+					<path d="M13.5 13.5 L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+				</svg>
+				<input
+					id="search"
+					type="search"
+					placeholder="Search file, link or site…"
+					autocomplete="off"
+					spellcheck="false"
+				/>
+			</label>
+
+			<div class="segments" role="group" aria-label="Filter downloads">
+				<button type="button" class="segment is-active" data-filter="all">All</button>
+				<button type="button" class="segment" data-filter="complete">Complete</button>
+				<button type="button" class="segment" data-filter="in_progress">Active</button>
+				<button type="button" class="segment" data-filter="interrupted">Failed</button>
+			</div>
+
+			<div class="toolbar-actions">
+				<button type="button" class="btn" id="refresh" title="Reload the list">
+					<svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true">
+						<path
+							d="M16 10a6 6 0 1 1-1.8-4.3M16 3v3.5h-3.5"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.8"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				</button>
+				<button type="button" class="btn" id="copy-links">Copy links</button>
+				<button type="button" class="btn" id="export-csv">Export CSV</button>
+				<button type="button" class="btn btn-danger" id="clear-all">Clear all</button>
+			</div>
+		</section>
+
+		<main>
+			<div class="rowhead" aria-hidden="true">
+				<span>Date / time</span>
+				<span>File &amp; link</span>
+				<span>Downloaded from</span>
+				<span>Status</span>
+				<span></span>
+			</div>
+			<div id="rows" class="rows"></div>
+
+			<div id="empty" class="empty" hidden>
+				<span class="empty-mark" aria-hidden="true">
+					<svg viewBox="0 0 32 32" width="30" height="30">
+						<path
+							d="M16 4 v14 M11 13 l5 5 5-5 M7 24 h18"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.4"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				</span>
+				<h2 id="empty-title">No downloads recorded yet</h2>
+				<p id="empty-hint">
+					Start a download in Chrome and it lands here the moment it begins.
+				</p>
+			</div>
+		</main>
+
+		<footer class="foot">
+			<span id="status-line">Ready.</span>
+			<span class="foot-note">Stored locally in this browser profile — nothing leaves the machine.</span>
+		</footer>
+
+		<script type="module" src="xloads.js"></script>
+	</body>
+</html>
